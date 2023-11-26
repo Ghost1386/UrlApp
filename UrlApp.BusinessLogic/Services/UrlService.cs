@@ -49,11 +49,16 @@ public class UrlService : IUrlService
     {
         var url = _urlRepository.Get(path);
 
+        ChangeNumberOfTransitions(url);
+
+        return url.LongUrl;
+    }
+
+    private void ChangeNumberOfTransitions(Url url)
+    {
         url.NumberOfTransitions += 1;
         
         _urlRepository.Edit(url);
-
-        return url.LongUrl;
     }
 
     public Url Find(int id)
