@@ -1,0 +1,26 @@
+﻿@model UrlApp.Common.DTOs.CreateUrlDto;
+
+@{
+    ViewData["Title"] = "Create user";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+</head>
+<a href="http://localhost:5069/Url/Index">Back to list</a>
+<body>
+    <form asp-controller="Url" asp-action="Create" method="post">
+        <div class="form-group">
+            <label class="control-label">Url: </label>
+            @Html.TextBoxFor(x => x.LongUrl, new { size = 64 })
+            <span asp-validation-for="LongUrl" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Create">
+    </form>
+</body>
+</html>

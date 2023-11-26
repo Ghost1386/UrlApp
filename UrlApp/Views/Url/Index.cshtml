@@ -1,0 +1,39 @@
+﻿@using UrlApp.Common.DTOs;
+@model IEnumerable<GetUrlDto>;
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+</head>
+<body>
+<a href="http://localhost:5069/Url/Create">Create</a>
+<table class="table">
+    <tr>
+        <th>Длинный URL</th>
+        <th>Короткий Url</th>
+        <th>Дата создания</th>
+        <th>Количество переходов</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.LongUrl)</td>
+            <td>@Html.DisplayFor(modelItem => item.ShortenedUrl)</td>
+            <td>@Html.DisplayFor(modelItem => item.DateOfCreation)</td>
+            <td>@Html.DisplayFor(modelItem => item.NumberOfTransitions)</td>
+            <td>
+                 <a href='@string.Format("http://localhost:5069/Url/Edit/" + item.Id)'>Edit</a> |
+                 <a href='@string.Format("http://localhost:5069/Url/Delete/" + item.Id)'>Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+@model UrlApp.Models.Models.Url
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+</head>
+<h1>Edit</h1>
+
+<h4>URL</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label class="control-label">Длинный URL: </label>
+                @Html.TextBoxFor(x => x.LongUrl, new {size=64})
+            </div>
+            <div class="form-group">
+                <label class="control-label">Короткий URL: </label>
+                @Html.TextBoxFor(x => x.ShortenedUrl, new {size=64})
+            </div>
+            <div class="form-group">
+                <label class="control-label">Дата создания: </label>
+                @Html.TextBoxFor(x => x.DateOfCreation, new {size=64})
+            </div>
+            <div class="form-group">
+                <label class="control-label">Количество переходов: </label>
+                @Html.TextBoxFor(x => x.NumberOfTransitions, new {size=64})
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="http://localhost:5069/Url/Index">Back to list</a>
+</div>
+</html>
