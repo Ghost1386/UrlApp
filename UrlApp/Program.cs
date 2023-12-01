@@ -7,8 +7,10 @@ using UrlApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var serverVersion = new MySqlServerVersion(new Version(10, 3, 39));
+
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseMySql(connection, serverVersion));
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
